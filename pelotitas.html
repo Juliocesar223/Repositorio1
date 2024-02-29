@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouncing Balls Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #f2f2f2;
+        }
+        canvas {
+            display: block;
+            margin: 40px auto 20px;
+            border: 1px solid #333;
+            box-shadow: 0 0 16px 2px rgba(0, 0, 0, 0.8);
+        }
+        p, a {
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 19px;
+            color: #777;
+            display: block;
+            width: 400px;
+            margin: 0 auto;
+            text-align: center;
+            text-decoration: none;
+        }
+        .info {
+            margin: 14px auto;
+            text-align: justify;
+            font-size: 18px;
+            color: #42f002;
+        }
+        a {
+            color: #33ee74;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <p>Utiliza las teclas de flecha izquierda, derecha y arriba para moverte.</p>
+    <script>
+        
+       // Variables para el lienzo y el contexto
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+// Propiedades de las pelotas
+const ballRadius = 10;
+const numBalls = 100; // Número de pelotas que queremos agregar
+const trailLength = 10; // Longitud de la estela (número de fotogramas)
+
+// Arreglo para almacenar las pelotas y sus posiciones anteriores
+const balls = [];
+
+// Crear las pelotas y asignarles posiciones iniciales y colores aleatorios
+for (let i = 0; i < numBalls; i++) {
+    const x = Math.random() * canvas.width;
+    const y = Math.random() * canvas.height;
+    const dx = (Math.random() - 0.5) * 2; // Velocidad horizontal aleatoria
+    const dy = (Math.random() - 0.5) * 2; // Velocidad vertical aleatoria
+    const color = getRandomColor(); // Generar un color aleatorio para cada pelota
+    const trail = []; // Almacenar posiciones anteriores para la estela
+    balls.push({ x, y, dx, dy, color, trail });
+}
+
+// Función para generar un color aleatorio en formato hexadecimal
+function getRandomColor() {
+    const letters = '0123456789ABCDEF';
+    let color = '#';
+    for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+// Función para dibujar una pelota con estela
+function drawBall(x, y, color, trail) {
+    for (let i = 0; i < trail.length; i++) {
+        const alpha = 1 - (i / trailLength); // Opacidad decreciente para la estela
+        ctx.beginPath();
+        ctx.arc(trail[i].x, trail[i].y, ballRadius, 0, Math.PI * 2);
+        ctx.fillStyle = `${color}${Math.floor(alpha * 255).toString(16)}`; // Color de la estela con opacidad
+        ctx.fill();
+        ctx.closePath();
+    }
+
+    // Dibujar la pelota actual
+    ctx.beginPath();
+    ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+    ctx.fillStyle = color;
+    ctx.fill();
+    ctx.closePath();
+}
+
+
+// Función para actualizar la posición de las pelotas
+function updateBallPosition(ball) {
+    ball.x += ball.dx;
+    ball.y += ball.dy;
+
+    // Agregar la posición actual al arreglo de la estela
+    ball.trail.push({ x: ball.x, y: ball.y });
+
+    // Mantener la longitud de la estela
+    if (ball.trail.length > trailLength) {
+        ball.trail.shift(); // Eliminar la posición más antigua
+    }
+}
+
+// Función principal de animación
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Dibujar y actualizar cada pelota
+    for (const ball of balls) {
+        drawBall(ball.x, ball.y, ball.color, ball.trail);
+        updateBallPosition(ball);
+    }
+
+    requestAnimationFrame(animate);
+}
+
+// Iniciar la animación
+animate();
+    </script>
+</body>
+</html>
