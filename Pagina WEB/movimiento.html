@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Estilo para la imagen */
+        img {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+    <img id="myImage" src="https://img.restaurantguru.com/rea1-Entropia-Barra-de-cafe-beverage.jpg" alt="Imagen a mover", height="200px">
+    <button onclick="moveLeft()">Izquierda</button>
+    <button onclick="moveRight()">Derecha</button>
+
+    <script>
+        // Función para mover la imagen hacia la izquierda
+        function moveLeft() {
+            const image = document.getElementById("myImage");
+            const currentPosition = parseInt(image.style.left) || 0;
+            image.style.left = currentPosition - 10 + "px"; // Ajusta la velocidad de movimiento
+        }
+
+        // Función para mover la imagen hacia la derecha
+        function moveRight() {
+            const image = document.getElementById("myImage");
+            const currentPosition = parseInt(image.style.left) || 0;
+            image.style.left = currentPosition + 10 + "px"; // Ajusta la velocidad de movimiento
+        }
+    </script>
+</body>
+</html>

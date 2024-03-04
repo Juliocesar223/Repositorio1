@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        /* Estilo para la imagen */
+        img {
+            position: absolute;
+            top: 80%;
+            left: 80%;
+            transform: translate(-50%, -50%);
+        }
+    </style>
+</head>
+<body>
+
+    <img id="myImage" src="https://http2.mlstatic.com/D_NQ_NP_764653-MLM74412411544_022024-O.webp" alt="Imagen a mover", height="200px">
+    <button onclick="moveLeft()">Izquierda</button>
+    <button onclick="moveRight()">Derecha</button>
+
+    <script>
+        // Función para mover la imagen hacia la izquierda
+        function moveLeft() {
+            const image = document.getElementById("myImage");
+            const currentPosition = parseInt(image.style.left) || 0;
+            image.style.left = currentPosition - 10 + "px"; // Ajusta la velocidad de movimiento
+            console.log("posicion" + image)
+        }
+
+        // Función para mover la imagen hacia la derecha
+        function moveRight() {
+            const image = document.getElementById("myImage");
+            const currentPosition = parseInt(image.style.left) || 0;
+            image.style.left = currentPosition + 10 + "px"; // Ajusta la velocidad de movimiento
+        }
+
+         // Función para mover la imagen hacia la derecha
+    function moveRight() {
+        const image = document.getElementById("myImage");
+        const currentPosition = parseInt(image.style.left) || 0;
+        image.style.left = currentPosition + 10 + "px"; // Ajusta la velocidad de movimiento
+    }
+
+    // Función para mover la imagen al hacer clic en cualquier parte de la pantalla
+    function moveOnClick(event) {
+        const image = document.getElementById("myImage");
+        image.style.left = event.clientX + "px";
+        image.style.top = event.clientY + "px";
+    }
+
+    
+
+    // Agregar el evento de clic al documento
+    document.addEventListener("click", moveOnClick);
+
+    </script>
+</body>
+</html>

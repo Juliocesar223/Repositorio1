@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<body>
+ 
+<img id="myImage" src="pic_bulboff.png" width="60" height="98">
+ 
+<img id="myImage1" onclick="changeImage()" src="pulsa.png" width="90" height="48">
+ 
+<script>
+ 
+function changeImage() {
+    var image = document.getElementById('myImage');
+    if (image.src.match("bulbon")) {
+        image.src = "pic_bulboff.png";
+    } else {
+        image.src = "pic_bulbon.png";
+    }
+}
+ 
+</script>
+ 
+</body>
+</html

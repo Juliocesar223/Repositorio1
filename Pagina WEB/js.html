@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        function alerta(boton){
+            
+            if(boton.value=='AM'){
+            saludos="buenos días";
+            alert (saludos);
+        }
+        else{
+            saludos="buenas tardes";
+        }
+        alert(saludos);
+    }
+    </script>
+</head>
+<body>
+    
+    <input type="button" value="Ok" onclick="confirm('no me hagas perder el tiempo')";><br>
+    <input type="button" value="Ok" onclick="alert('Ta chidito')";>
+    <br>
+    <br>
+    <input type="button" value="AM" onclick="alerta(this.value)";><br>
+    <input type="button" value="PM" onclick="alerta(this.value)";>
+</body>
+</html> 

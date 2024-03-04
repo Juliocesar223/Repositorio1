@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bouncing Balls Game</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            background: #f2f2f2;
+        }
+        canvas {
+            display: block;
+            margin: 40px auto 20px;
+            border: 1px solid #333;
+            box-shadow: 0 0 16px 2px rgba(0, 0, 0, 0.8);
+        }
+        p, a {
+            font-family: Helvetica, Arial, sans-serif;
+            font-size: 19px;
+            color: #777;
+            display: block;
+            width: 400px;
+            margin: 0 auto;
+            text-align: center;
+            text-decoration: none;
+        }
+        .info {
+            margin: 14px auto;
+            text-align: justify;
+            font-size: 18px;
+            color: #42f002;
+        }
+        a {
+            color: #33ee74;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <p>Utiliza las teclas de flecha izquierda, derecha y arriba para moverte.</p>
+    <script>
+        
+        // Variables para el lienzo y el contexto
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+// Propiedades de las pelotas
+const ballRadius = 10;
+const numBalls = 10; // Número de pelotas que queremos agregar
+
+// Arreglo para almacenar las pelotas
+const balls = [];
+
+// Crear las pelotas y asignarles posiciones iniciales
+for (let i = 0; i < numBalls; i++) {
+    const x = Math.random() * canvas.width;
+    const y = Math.random() * canvas.height;
+    const dx = (Math.random() - 0.5) * 2; // Velocidad horizontal aleatoria
+    const dy = (Math.random() - 0.5) * 2; // Velocidad vertical aleatoria
+    balls.push({ x, y, dx, dy });
+}
+
+// Función para dibujar una pelota
+function drawBall(x, y) {
+    ctx.beginPath();
+    ctx.arc(x, y, ballRadius, 0, Math.PI * 2);
+    ctx.fillStyle = '#0095DD';
+    ctx.fill();
+    ctx.closePath();
+}
+
+// Función para actualizar la posición de las pelotas
+function updateBallPosition(ball) {
+    ball.x += ball.dx;
+    ball.y += ball.dy;
+}
+
+// Función para detectar colisiones con los bordes del lienzo
+function checkCanvasEdges(ball) {
+    if (ball.x + ball.dx > canvas.width - ballRadius || ball.x + ball.dx < ballRadius) {
+        ball.dx = -ball.dx;
+    }
+    if (ball.y + ball.dy > canvas.height - ballRadius || ball.y + ball.dy < ballRadius) {
+        ball.dy = -ball.dy;
+    }
+}
+
+// Función principal de animación
+function animate() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    // Dibujar y actualizar cada pelota
+    for (const ball of balls) {
+        drawBall(ball.x, ball.y);
+        updateBallPosition(ball);
+        checkCanvasEdges(ball);
+    }
+
+    requestAnimationFrame(animate);
+}
+
+// Iniciar la animación
+animate();
+    </script>
+</body>
+</html>
