@@ -1,0 +1,50 @@
+*{
+    box-sizing: border-box;
+}
+
+.wrapper{
+    width: 25rem;
+    overflow: hidden;
+    border: 1px dashed;
+    border-radius: 1rem;
+    padding: 0.5rem;
+    margin: 1rem;
+    position: absolute;
+}
+
+.user-image{
+    border-radius: 50%;
+    height: 2rem;
+    width: 2rem;
+}
+
+.username{
+    font-weight: 700;
+}
+.user{
+    position: relative;
+    bottom: 1rem;
+}
+.option{
+    position: relative;
+    left: 17rem;
+    bottom: 1rem;
+}
+
+.post-container img{
+    width: 24rem;
+}
+
+.details i{
+    cursor: pointer;
+    font-size: 24px;
+}
+
+.save{
+    position: relative;
+    left: 17rem;
+}
+
+.liked{
+    color: #e74c3c;
+}
