@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <style>
+
+        /* Estilos para la lista en la barra de navegación */
+        .navbar ul {
+            list-style: none;
+            padding: 0;
+        }
+        .navbar li {
+            margin-bottom: 10px;
+        }
+        /* Estilos para el enlace grande */
+        .enlace-grande {
+            font-size: 18px;
+        }
+        /* Espaciado entre la tabla y el fragmento de código PDF */
+        .separacion {
+            margin-top: 20px;
+        }
+
+		table {
+			width: 50%; /* Ajusta este valor para cambiar el ancho de la tabla */
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 15px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+
+		.slider {
+            width: 90%;
+            margin: auto;
+            overflow: hidden;
+        }
+
+        .slider img {
+            width: 100%;
+            height: auto;
+            display: block;
+            animation: slide 20s infinite;
+        }
+
+        @keyframes slide {
+            0% {opacity: 0;}
+            5% {opacity: 1;}
+            25% {opacity: 1;}
+            30% {opacity: 0;}
+            100% {opacity: 0;}
+        }
+
+        img:nth-child(2) {animation-delay: 5s;}
+        img:nth-child(3) {animation-delay: 10s;}
+        img:nth-child(4) {animation-delay: 15s;}
+
+
+    </style>
+
+</head>
+<body>
+
+    <div class="navbar">
+        <ul>
+            <li>Elemento 1</li>
+            <li>Elemento 2</li>
+            <li>Elemento 3</li>
+        </ul>
+
+
+		<ul>	
+			<li><a href="https://www.citio.com.mx/" class="enlace-grande">Sitio de Motos</a></li>
+			<li><a href="https://configurator.bmw-motorrad.com/index_es_MX.html#/modelfinder" class="enlace-grande">BMW MOTORRAD</a></li>
+		</ul>
+    </div>
+
+	<table>
+        <tr>
+            <th>MARCA</th>
+            <th>MODELO</th>
+            <th>PRECIO</th>
+        </tr>
+        <tr>
+            <td>BMW</td>
+            <td>R 1250 GS EQUIPADA RALLYE</td>
+            <td>527,100.00</td>
+        </tr>
+        <tr>
+			<td>BMW</td>
+            <td>R 1250R GS ADVENTURE BÁSICA</td>
+            <td>$447,000.00</td>
+        </tr>
+    </table>
+
+    <!-- Fragmento de código para incrustar un archivo PDF -->
+    <div class="separacion">
+        <object data="https://www.bmw.com.mx/content/dam/bmw/marketMX/bmw_com_mx/Descargas/manuales-de-rescate/NEU_bmw-iso_Final_RLF_es.pdf.asset.1628610760179.pdf" type="application/pdf">
+            Información en  PDF. Puedes descargarlo haciendo clic <a href="https://www.bmw.com.mx/content/dam/bmw/marketMX/bmw_com_mx/Descargas/manuales-de-rescate/NEU_bmw-iso_Final_RLF_es.pdf.asset.1628610760179.pdf">aquí</a>.
+        </object>
+    </div>
+
+   
+
+	
+	
+    
+</body>
+
+<body>
+    <div class="slider">
+        <img src="https://acnews.blob.core.windows.net/imgnews/paragraph/NPAZ_3758c1252f864b9fb40d2a91d4b53cf0.jpg" alt="Imagen 1">
+        <img src="https://i.pinimg.com/736x/91/53/a5/9153a5e991e3acc68eb348ed6cdcecbe.jpg" alt="Imagen 2">
+        <img src="https://mediapool.bmwgroup.com/cache/P9/202303/P90497647/P90497647-bmw-motorrad-brazil-new-color-versions-03-2023-600px.jpg" alt="Imagen 3">
+        
+    </div>
+</body>
+</html>
